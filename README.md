@@ -1,11 +1,3 @@
-# Soccer_Prediction
+# predictionsgenie
 
-For windows,assuming all packages are installed
-run the following commands
-
-
-$env:FLASK_ENV="development"
-
-$env:FLASK_APP="app.py" 
-
-flask run
+Check https://predictionsgenie.herokuapp.com/
