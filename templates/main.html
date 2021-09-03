@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body{
+            background-image:url("{{ url_for('static', filename='main_background.png') }}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="block">
+            <div class = draggable>
+                <img class="item" id="Manchester United" src="https://resources.premierleague.com/premierleague/badges/50/t1.png" draggable="true"
+                ondragstart="drag(event)" title="Manchester United"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Aston Villa" src="https://resources.premierleague.com/premierleague/badges/50/t7.png" draggable="true"
+                ondragstart="drag(event)" title="Aston Villa"> 
+            </div>
+            <!--
+            <div class="draggable">
+                <img class="item" id="Brentford" src="https://resources.premierleague.com/premierleague/badges/50/t94.png" draggable="true"
+                ondragstart="drag(event)" title="Brentford"> 
+            </div>
+            -->
+            <div class="draggable">
+                <img class="item" id="Brighton" src="https://resources.premierleague.com/premierleague/badges/50/t36.png" draggable="true"
+                ondragstart="drag(event)" title="Brighton"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Burnley" src="https://resources.premierleague.com/premierleague/badges/50/t90.png" draggable="true"
+                ondragstart="drag(event)" title="Burnley">  
+            </div>
+            <div class="draggable">
+                <img class="item" id="Chelsea" src="https://resources.premierleague.com/premierleague/badges/50/t8.png" draggable="true"
+                ondragstart="drag(event)" title="Chelsea"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Crystal Palace" src="https://resources.premierleague.com/premierleague/badges/50/t31.png" draggable="true"
+                ondragstart="drag(event)" title="Crystal Palace"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Everton" src="https://resources.premierleague.com/premierleague/badges/50/t11.png" draggable="true"
+                ondragstart="drag(event)" title="Everton"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Leeds United" src="https://resources.premierleague.com/premierleague/badges/50/t2.png" draggable="true"
+                ondragstart="drag(event)" title="Leeds Utd."> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Leicester City" src="https://resources.premierleague.com/premierleague/badges/50/t13.png" draggable="true"
+                ondragstart="drag(event)" title="Leicester City"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Liverpool" src="https://resources.premierleague.com/premierleague/badges/50/t14.png" draggable="true"
+                ondragstart="drag(event)" title="Liverpool"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Manchester City" src="https://resources.premierleague.com/premierleague/badges/50/t43.png" draggable="true"
+                ondragstart="drag(event)" title="Manchester City"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Newcastle United" src="https://resources.premierleague.com/premierleague/badges/50/t4.png" draggable="true"
+                ondragstart="drag(event)" title="Newcastle Utd."> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Norwich City" src="https://resources.premierleague.com/premierleague/badges/50/t45.png" draggable="true"
+                ondragstart="drag(event)" title="Norwich City"> 
+            </div>
+            <!-- <div class="draggable">
+                <img class="item" id="Watford" src="https://resources.premierleague.com/premierleague/badges/50/t57.png" draggable="true"
+                ondragstart="drag(event)" title="Watford"> 
+            </div>
+            -->
+            <div class="draggable">
+                <img class="item" id="West Ham United" src="https://resources.premierleague.com/premierleague/badges/50/t21.png" draggable="true"
+                ondragstart="drag(event)" title="West Ham Utd."> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Wolverhampton" src="https://resources.premierleague.com/premierleague/badges/50/t39.png" draggable="true"
+                ondragstart="drag(event)" title="Wolverhampton"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="Tottenham Hotspur" src="https://resources.premierleague.com/premierleague/badges/50/t6.png" draggable="true"
+                ondragstart="drag(event)" title="Tottenham Hotspur"> 
+            </div> 
+            <div class="draggable">
+                <img class="item" id="Southampton" src="https://resources.premierleague.com/premierleague/badges/50/t20.png" draggable="true"
+                ondragstart="drag(event)" title="Southampton"> 
+            </div>
+        
+        <div class="droppable-elements">
+            <div id = "home" ondrop="drop(event)" class="droppable" data-draggable-id="home" padding="200px">Home</div>
+            <div id = "away" ondrop="drop(event)" class="droppable" data-draggable-id="away">Away</div>
+        </div>
+    </div>
+    <button type="button" class="button" onClick="window.location.href=window.location.href">Reset Page</button>
+    <button type="button" class="button" onClick="send_data()">Calculate Probabilities</button>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+
+</html>
