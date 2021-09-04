@@ -25,9 +25,9 @@ Check it out at : https://predictionsgenie.herokuapp.com/
 
 # About
 
-**Front End** - Bootstrap | HTML | CSS | JavaScript
-**Back End**  - Python | Beautiful Soup 4 | Flask
-Hosting service: Heroku/Salesforce
+**Front End** - Bootstrap | HTML | CSS | JavaScript  
+**Back End**  - Python | Beautiful Soup 4 | Flask  
+Hosting service: Heroku/Salesforce  
 
 Math behind the calculations uses the Possion Distribution to estimate the probabilites by using data from the
 2020/2021 Premier League season. For more information on the Poission Distribution follow the links below
