@@ -45,7 +45,6 @@ class PredictionsGenie:
         probabilities_Manchester_United = []
         probabilities_Arsenal = []
         probabilities_Map = My_Dictionary()
-        print("Format of score " + "(Home goals, Away goals)")
         for manchestergoals in range(5):
             poisson_manchester = self.poisson(expected_home_goals, manchestergoals)
             probabilities_Manchester_United.append(poisson_manchester)
@@ -53,9 +52,13 @@ class PredictionsGenie:
                 poisson_arsenal = self.poisson(expected_away_goals, arsenalgoals)
                 if(arsenalgoals == 0.0):
                     probabilities_Arsenal.append(poisson_arsenal)
-                print("(" + str(manchestergoals) + ", " + str(arsenalgoals) + ")" + \
-                str(poisson_manchester * poisson_arsenal * 100) + "%")
-                probabilities_Map.add("(" + str(manchestergoals) + ", " + str(arsenalgoals) + ")", str(poisson_manchester * poisson_arsenal * 100))
+                    
+                final_score_prob = poisson_manchester * poisson_arsenal * 100
+                personal_formatter= "{0:.2f}"
+                final_score_prob_str = str(personal_formatter.format(final_score_prob))
+                final_score = "(" + str(manchestergoals) + ", " + str(arsenalgoals) + ")"
+                probabilities_Map.add(final_score, final_score_prob_str)
+                
         return probabilities_Map
     
     def dictionary_builder(self, team_data):
@@ -77,9 +80,6 @@ class PredictionsGenie:
         away_team_data = self.scraper(soup,"awayClassification")
         home_mappings = self.dictionary_builder(home_team_data)
         away_mappings = self.dictionary_builder(away_team_data)
-
-        print(home_mappings)
-        print(away_mappings)
         
         avg_goals_home = float(home_mappings["total"]) / 380.0
         avg_goals_away = float(away_mappings["total"]) /380.0        

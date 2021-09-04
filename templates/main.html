@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hi</title>
+    <title>Prediction Genie</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         body{
             background-image:url("{{ url_for('static', filename='main_background.png') }}");
@@ -20,14 +23,14 @@
     <div class="container">
         <div class="block">
             <div class = draggable>
-                <img class="item" id="Manchester United" src="https://resources.premierleague.com/premierleague/badges/50/t1.png" draggable="true"
-                ondragstart="drag(event)" title="Manchester United"> 
+                <img class="item" id="Manchester Utd" src="https://resources.premierleague.com/premierleague/badges/50/t1.png" draggable="true"
+                ondragstart="drag(event)" title="Manchester Utd"> 
             </div>
             <div class="draggable">
                 <img class="item" id="Aston Villa" src="https://resources.premierleague.com/premierleague/badges/50/t7.png" draggable="true"
                 ondragstart="drag(event)" title="Aston Villa"> 
             </div>
-            <!--
+            <!-- relegated
             <div class="draggable">
                 <img class="item" id="Brentford" src="https://resources.premierleague.com/premierleague/badges/50/t94.png" draggable="true"
                 ondragstart="drag(event)" title="Brentford"> 
@@ -54,8 +57,8 @@
                 ondragstart="drag(event)" title="Everton"> 
             </div>
             <div class="draggable">
-                <img class="item" id="Leeds United" src="https://resources.premierleague.com/premierleague/badges/50/t2.png" draggable="true"
-                ondragstart="drag(event)" title="Leeds Utd."> 
+                <img class="item" id="Leeds" src="https://resources.premierleague.com/premierleague/badges/50/t2.png" draggable="true"
+                ondragstart="drag(event)" title="Leeds"> 
             </div>
             <div class="draggable">
                 <img class="item" id="Leicester City" src="https://resources.premierleague.com/premierleague/badges/50/t13.png" draggable="true"
@@ -70,29 +73,30 @@
                 ondragstart="drag(event)" title="Manchester City"> 
             </div>
             <div class="draggable">
-                <img class="item" id="Newcastle United" src="https://resources.premierleague.com/premierleague/badges/50/t4.png" draggable="true"
-                ondragstart="drag(event)" title="Newcastle Utd."> 
+                <img class="item" id="Newcastle" src="https://resources.premierleague.com/premierleague/badges/50/t4.png" draggable="true"
+                ondragstart="drag(event)" title="Newcastle"> 
             </div>
+            <!-- relegated
             <div class="draggable">
                 <img class="item" id="Norwich City" src="https://resources.premierleague.com/premierleague/badges/50/t45.png" draggable="true"
                 ondragstart="drag(event)" title="Norwich City"> 
             </div>
-            <!-- <div class="draggable">
-                <img class="item" id="Watford" src="https://resources.premierleague.com/premierleague/badges/50/t57.png" draggable="true"
-                ondragstart="drag(event)" title="Watford"> 
-            </div>
-            -->
+             -->
             <div class="draggable">
-                <img class="item" id="West Ham United" src="https://resources.premierleague.com/premierleague/badges/50/t21.png" draggable="true"
-                ondragstart="drag(event)" title="West Ham Utd."> 
+                <img class="item" id="Arsenal" src="https://resources.premierleague.com/premierleague/badges/50/t3.png" draggable="true"
+                ondragstart="drag(event)" title="Arsenal"> 
+            </div>
+            <div class="draggable">
+                <img class="item" id="West Ham" src="https://resources.premierleague.com/premierleague/badges/50/t21.png" draggable="true"
+                ondragstart="drag(event)" title="West Ham"> 
             </div>
             <div class="draggable">
                 <img class="item" id="Wolverhampton" src="https://resources.premierleague.com/premierleague/badges/50/t39.png" draggable="true"
                 ondragstart="drag(event)" title="Wolverhampton"> 
             </div>
             <div class="draggable">
-                <img class="item" id="Tottenham Hotspur" src="https://resources.premierleague.com/premierleague/badges/50/t6.png" draggable="true"
-                ondragstart="drag(event)" title="Tottenham Hotspur"> 
+                <img class="item" id="Tottenham" src="https://resources.premierleague.com/premierleague/badges/50/t6.png" draggable="true"
+                ondragstart="drag(event)" title="Tottenham"> 
             </div> 
             <div class="draggable">
                 <img class="item" id="Southampton" src="https://resources.premierleague.com/premierleague/badges/50/t20.png" draggable="true"
@@ -100,13 +104,82 @@
             </div>
         
         <div class="droppable-elements">
-            <div id = "home" ondrop="drop(event)" class="droppable" data-draggable-id="home" padding="200px">Home</div>
-            <div id = "away" ondrop="drop(event)" class="droppable" data-draggable-id="away">Away</div>
+            <div id = "home" ondrop="drop(event)" style = "position:relative; right:2px" class="droppable" data-draggable-id="home" padding="200px">Home (H)</div>
+            
+            <div id="sign-in" style = "position:relative; left:40px; display: none;" class="table-data">         
+                <table class="table table-bordered table-sm mx-auto">
+                    <thead>
+                      <tr>
+                        <th id="homeaway"></th>
+                        <th>0 (H)</th>
+                        <th>1 (H)</th>
+                        <th>2 (H)</th>
+                        <th>3 (H)</th>
+                        <th>4 (H)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><b>0 (A)</b></td>
+                        <td id = "(0, 0)"></td>
+                        <td id = "(0, 1)"></td>
+                        <td id = "(0, 2)"></td>
+                        <td id = "(0, 3)"></td>
+                        <td id = "(0, 4)"></td>
+                    </tr>
+                    <tr>
+                        <td><b>1 (A)</b></td>
+                        <td id = "(1, 0)"></td>
+                        <td id = "(1, 1)"></td>
+                        <td id = "(1, 2)"></td>
+                        <td id = "(1, 3)"></td>
+                        <td id = "(1, 4)"></td>
+                    </tr>
+                    <tr>
+                        <td><b>2 (A)</b></td>
+                        <td id = "(2, 0)"></td>
+                        <td id = "(2, 1)"></td>
+                        <td id = "(2, 2)"></td>
+                        <td id = "(2, 3)"></td>
+                        <td id = "(2, 4)"></td>
+                    </tr>
+                    <tr>
+                        <td><b>3 (A)</b></td>
+                        <td id = "(3, 0)"></td>
+                        <td id = "(3, 1)"></td>
+                        <td id = "(3, 2)"></td>
+                        <td id = "(3, 3)"></td>
+                        <td id = "(3, 4)"></td>
+                    </tr>
+                    <tr>
+                        <td><b>4 (A)</b></td>
+                        <td id = "(4, 0)"></td>
+                        <td id = "(4, 1)"></td>
+                        <td id = "(4, 2)"></td>
+                        <td id = "(4, 3)"></td>
+                        <td id = "(4, 4)"></td>
+                    </tr>
+                    </tbody>
+                  </table>
+            </div>  
+
+            <div id = "away" ondrop="drop(event)" style = "position:relative; left:100px" class="droppable" data-draggable-id="away">Away (A)</div>
         </div>
     </div>
-    <button type="button" class="button" onClick="window.location.href=window.location.href">Reset Page</button>
-    <button type="button" class="button" onClick="send_data()">Calculate Probabilities</button>
+
+    <button type="button"  style = "position:relative; left:40px; bottom:-60px" class="button" onClick="window.location.reload()">Reset Page</button>
+    <button type="button" id="calc_button" style = "position:relative; left:40px; bottom:-60px" class="button" onClick="send_data()">Calculate Probabilities</button>
     <script src="{{url_for('static', filename='js/script.js')}}"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

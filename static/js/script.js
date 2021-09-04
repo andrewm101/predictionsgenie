@@ -74,11 +74,34 @@ function drop(event) {
   }
 
   function send_data(){
-    fetch(`/getPredictions/${team_data_map.get('home')}/${team_data_map.get('away')}`)
-        .then(function (response) {
-            return response.json()
-        }).then(function (text) {
-            console.log(text);
-    });
-    console.log(team_data_map);
+    // Need to output message for error
+    // telling user both boxes must be filled
+    if(team_data_map.size > 1){
+        fetch(`/getPredictions/${team_data_map.get('home')}/${team_data_map.get('away')}`)
+            .then(function (response) {
+                return response.json()
+            }).then(function (text) {
+                let jsonData_string = (JSON.stringify(text));
+                console.log(jsonData_string);
+                let probabilities = new Array();
+                while(jsonData_string.indexOf('.') != -1){
+                    let start_idx = jsonData_string.indexOf('.') - 1;
+                    let end_idx = jsonData_string.indexOf('.') + 3;
+                    probabilities.push(jsonData_string.substring(start_idx, end_idx));
+                    jsonData_string = jsonData_string.substr(end_idx);
+                }
+                console.log(probabilities);
+                for(let home = 0; home <=4; home++){
+                    for(let away = 0; away <=4; away++){
+                        let score_id = "(" + home + ", " + away + ")";
+                        document.getElementById(String(score_id)).innerHTML = String(probabilities[home + away])+ "%";
+                    }
+                }
+            });
+        showDiv();
+    }
+  }
+
+  function showDiv() {
+    document.getElementById('sign-in').style.display = "block";
   }
