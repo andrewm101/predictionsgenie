@@ -1,6 +1,7 @@
 # PredictionsGenie
 
 Live at : https://predictionsgenie.herokuapp.com/
+Note: Page UI is currently hard coded for a ~15 inch display
 
   # Usage
     Buttons:
